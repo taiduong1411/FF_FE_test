@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/survey" element={<Survey />} />
+        {/* <Route path="/" element={<LandingPage />} /> */}
+        <Route path="/" element={<Survey />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/theme" element={<Theme />} />
       </Routes>
