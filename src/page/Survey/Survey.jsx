@@ -20,36 +20,9 @@ const Survey = () => {
       description:
         "Blue Shyness là sản phẩm cao cấp với hương vị độc đáo từ quả việt quất và hoa oải hương. Sản phẩm được lên men tự nhiên trong 14 ngày, tạo ra hương vị chua ngọt cân bằng hoàn hảo. Với hàm lượng probiotics cao và không chứa chất bảo quản, Blue Shyness giúp hỗ trợ hệ tiêu hóa và tăng cường sức khỏe tổng thể.",
     },
-    {
-      name: "Raspmerry",
-      image: "/menu_convert/RASPMERRY_clipped_rev_1.png",
-      batchNumber: "FF-2024-002",
-      productionDate: "2024-01-20",
-      expiryDate: "2024-07-20",
-      description:
-        "Raspmerry mang đến hương vị ngọt ngào từ quả mâm xôi tươi ngon. Sản phẩm được lên men tự nhiên với công thức độc quyền, tạo ra hương vị cân bằng giữa chua và ngọt. Chứa nhiều vitamin C và chất chống oxy hóa, giúp tăng cường hệ miễn dịch và làm đẹp da.",
-    },
-    {
-      name: "Kitamint",
-      image: "/menu_convert/KITAMINT_clipped_rev_1.png",
-      batchNumber: "FF-2024-003",
-      productionDate: "2024-01-25",
-      expiryDate: "2024-07-25",
-      description:
-        "Kitamint với hương vị bạc hà tươi mát, mang đến cảm giác sảng khoái và thanh lọc cơ thể. Sản phẩm được lên men từ trà xanh chất lượng cao, kết hợp với tinh dầu bạc hà tự nhiên. Giúp hỗ trợ tiêu hóa và mang lại hơi thở thơm mát.",
-    },
-    {
-      name: "Mintgo",
-      image: "/menu_convert/MINTGO_clipped_rev_1.png",
-      batchNumber: "FF-2024-004",
-      productionDate: "2024-02-01",
-      expiryDate: "2024-08-01",
-      description:
-        "Mintgo là sự kết hợp hoàn hảo giữa bạc hà và gừng, tạo ra hương vị độc đáo và ấm áp. Sản phẩm giúp làm ấm cơ thể, hỗ trợ tiêu hóa và tăng cường sức đề kháng. Đặc biệt phù hợp cho những ngày mưa lạnh.",
-    },
   ];
 
-  const [selectedProduct] = useState(products[0]); // Chỉ hiển thị sản phẩm đầu tiên
+  const [selectedProduct] = useState(products[0]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -102,11 +75,11 @@ const Survey = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10">
-          {/* Survey Form (First on Mobile) */}
-          <div className="order-1 lg:order-2 lg:w-1/2">
+        {/* Main Content - 2 Columns */}
+        <div className="flex flex-col lg:flex-row gap-10 mb-16">
+          <div className="lg:w-1/2">
             <StickyBox offsetTop={32} offsetBottom={32}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
                 <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
                   <span className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
                     <svg
@@ -294,11 +267,9 @@ const Survey = () => {
               </div>
             </StickyBox>
           </div>
-
-          {/* Product Information (Second on Mobile) */}
-          <div className="order-2 lg:order-1 lg:w-1/2 space-y-8">
-            {/* 1. Thông tin sản phẩm */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500">
+          {/* Left Column - Product Information */}
+          <div className="lg:w-1/2">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
               <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
                 <span className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
                   <svg
@@ -314,7 +285,7 @@ const Survey = () => {
                     />
                   </svg>
                 </span>
-                Thông Tin Sản Phẩm
+                Xuất xứ
               </h2>
 
               <div className="space-y-4">
@@ -350,12 +321,17 @@ const Survey = () => {
                 </div>
               </div>
 
-              {/* Thông tin bổ sung về sản phẩm */}
-              <div className="mt-6 p-4 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl border border-emerald-100">
-                <h4 className="font-bold text-gray-800 mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-2">
+              {/* Product Image */}
+              <div className="mt-8 text-center">
+                <div className="relative inline-block">
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.name}
+                    className="w-48 h-auto mx-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
                     <svg
-                      className="w-3 h-3 text-white"
+                      className="w-4 h-4 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24">
@@ -363,83 +339,18 @@ const Survey = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        d="M5 13l4 4L19 7"
                       />
                     </svg>
-                  </span>
-                  Thông tin bổ sung
-                </h4>
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
-                    <span className="text-gray-700">Thể tích: 330ml</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                    <span className="text-gray-700">Calories: 45</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                    <span className="text-gray-700">Sugar: 8g</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
-                    <span className="text-gray-700">Protein: 2g</span>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* 2. Thông tin chi tiết sản phẩm */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500">
-              <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
-                <span className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </span>
-                Chi Tiết Sản Phẩm
-              </h2>
-
-              <div className="space-y-6">
-                {/* Hình ảnh sản phẩm */}
-                <div className="text-center">
-                  <div className="relative inline-block">
-                    <img
-                      src={selectedProduct.image}
-                      alt={selectedProduct.name}
-                      className="w-56 h-auto mx-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mô tả sản phẩm */}
-                <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-100">
-                  <h3 className="font-bold text-gray-800 mb-4 flex items-center">
-                    <span className="w-6 h-6 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
+              {/* Additional Product Info */}
+              <div className="mt-8 space-y-4">
+                <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl p-4 border border-emerald-100">
+                  <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                    <span className="w-5 h-5 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-2">
                       <svg
                         className="w-3 h-3 text-white"
                         fill="none"
@@ -453,374 +364,231 @@ const Survey = () => {
                         />
                       </svg>
                     </span>
-                    Mô tả sản phẩm
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                    {selectedProduct.description}
-                  </p>
-
-                  {/* Thông tin bổ sung */}
-                  <div className="space-y-4">
-                    <div className="flex items-center p-3 bg-gradient-to-r from-emerald-100 to-cyan-100 rounded-xl">
-                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
-                        <svg
-                          className="w-4 h-4 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Lên men tự nhiên
-                        </p>
-                        <p className="text-sm text-gray-600">14 ngày lên men</p>
-                      </div>
+                    Thông tin bổ sung
+                  </h4>
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
+                      <span className="text-gray-700">Thể tích: 330ml</span>
                     </div>
-
-                    <div className="flex items-center p-3 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-xl">
-                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mr-3">
-                        <svg
-                          className="w-4 h-4 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Không chất bảo quản
-                        </p>
-                        <p className="text-sm text-gray-600">100% tự nhiên</p>
-                      </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span className="text-gray-700">Calories: 45</span>
                     </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                      <span className="text-gray-700">Sugar: 8g</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                      <span className="text-gray-700">Protein: 2g</span>
+                    </div>
+                  </div>
+                </div>
 
-                    <div className="flex items-center p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl">
-                      <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-3">
-                        <svg
-                          className="w-4 h-4 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 10V3L4 14h7v7l9-11h-7z"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Probiotics cao
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Tốt cho tiêu hóa
-                        </p>
-                      </div>
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 border border-blue-100">
+                  <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                    <span className="w-5 h-5 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mr-2">
+                      <svg
+                        className="w-3 h-3 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </span>
+                    Đặc điểm nổi bật
+                  </h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span className="text-gray-700">
+                        Lên men tự nhiên 14 ngày
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Right Column - Survey Form */}
         </div>
 
-        {/* Thêm nội dung để tạo scroll */}
-        <div className="mt-16 space-y-8 min-h-screen">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Thông Tin Bổ Sung
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl border border-emerald-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Quy trình sản xuất
-                </h3>
-                <p className="text-gray-700">
-                  Sản phẩm được sản xuất theo quy trình khép kín, đảm bảo chất
-                  lượng và vệ sinh an toàn thực phẩm.
-                </p>
-              </div>
-              <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Chứng nhận chất lượng
-                </h3>
-                <p className="text-gray-700">
-                  Đã được chứng nhận ISO 22000 và HACCP, đảm bảo an toàn cho
-                  người tiêu dùng.
-                </p>
-              </div>
-              <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Bao bì thân thiện
-                </h3>
-                <p className="text-gray-700">
-                  Sử dụng bao bì thân thiện với môi trường, có thể tái chế 100%.
-                </p>
-              </div>
-              <div className="p-6 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl border border-orange-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Phân phối rộng rãi
-                </h3>
-                <p className="text-gray-700">
-                  Có mặt tại hơn 50 tỉnh thành trên toàn quốc với hệ thống phân
-                  phối chuyên nghiệp.
-                </p>
-              </div>
-            </div>
-          </div>
+        {/* Bottom Section - Product Details */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+          <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
+            <span className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </span>
+            Chi Tiết Sản Phẩm
+          </h2>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Đánh Giá Từ Khách Hàng
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl border border-emerald-100">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                    N
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Product Description */}
+            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-100">
+              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+                <span className="w-6 h-6 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
+                  <svg
+                    className="w-3 h-3 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                Mô tả sản phẩm
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                {selectedProduct.description}
+              </p>
+
+              {/* Product Features */}
+              <div className="space-y-4">
+                <div className="flex items-center p-3 bg-gradient-to-r from-emerald-100 to-cyan-100 rounded-xl">
+                  <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800">Nguyễn Văn A</h4>
-                    <div className="flex text-yellow-400">
-                      <span>★★★★★</span>
-                    </div>
+                    <p className="font-semibold text-gray-800">
+                      Lên men tự nhiên
+                    </p>
+                    <p className="text-sm text-gray-600">14 ngày lên men</p>
                   </div>
                 </div>
-                <p className="text-gray-700">
-                  "Hương vị rất ngon, tôi thích nhất là Blue Shyness. Sản phẩm
-                  chất lượng cao và bao bì đẹp."
-                </p>
-              </div>
 
-              <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                    T
+                <div className="flex items-center p-3 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-xl">
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mr-3">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      />
+                    </svg>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800">Trần Thị B</h4>
-                    <div className="flex text-yellow-400">
-                      <span>★★★★★</span>
-                    </div>
+                    <p className="font-semibold text-gray-800">
+                      Không chất bảo quản
+                    </p>
+                    <p className="text-sm text-gray-600">100% tự nhiên</p>
                   </div>
                 </div>
-                <p className="text-gray-700">
-                  "Tôi đã sử dụng sản phẩm này được 3 tháng, cảm thấy sức khỏe
-                  tiêu hóa cải thiện rõ rệt."
-                </p>
-              </div>
 
-              <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                    L
+                <div className="flex items-center p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl">
+                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-3">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
+                    </svg>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800">Lê Văn C</h4>
-                    <div className="flex text-yellow-400">
-                      <span>★★★★★</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  "Bao bì rất đẹp và thân thiện môi trường. Hương vị Mintgo rất
-                  độc đáo, tôi rất thích!"
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Liên Hệ Và Hỗ Trợ
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-bold text-gray-800 mb-4">
-                  Thông tin liên hệ
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-gray-700">Hotline: 1900-xxxx</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mr-3">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-gray-700">
-                      Email: info@ffpremium.com
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-3">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-gray-700">
-                      Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-800 mb-4">Giờ làm việc</h3>
-                <div className="space-y-2 text-gray-700">
-                  <div className="flex justify-between">
-                    <span>Thứ 2 - Thứ 6:</span>
-                    <span>8:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Thứ 7:</span>
-                    <span>8:00 - 12:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Chủ nhật:</span>
-                    <span>Nghỉ</span>
+                    <p className="font-semibold text-gray-800">
+                      Probiotics cao
+                    </p>
+                    <p className="text-sm text-gray-600">Tốt cho tiêu hóa</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Thêm nhiều nội dung hơn để đảm bảo có scroll */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Thông Tin Chi Tiết
-            </h2>
+            {/* Nutritional Information */}
             <div className="space-y-6">
-              <div className="p-6 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl border border-emerald-100">
-                <h3 className="font-bold text-gray-800 mb-3">
+              <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl p-6 border border-emerald-100">
+                <h3 className="font-bold text-gray-800 mb-4">
                   Thành phần dinh dưỡng
                 </h3>
-                <p className="text-gray-700 mb-4">Mỗi chai 330ml chứa:</p>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Calories: 45 kcal</li>
-                  <li>• Protein: 2g</li>
-                  <li>• Carbohydrate: 8g</li>
-                  <li>• Sugar: 6g</li>
-                  <li>• Probiotics: 1 tỷ CFU</li>
-                </ul>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                    <span className="text-gray-700">Calories</span>
+                    <span className="font-bold text-gray-900">45 kcal</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                    <span className="text-gray-700">Protein</span>
+                    <span className="font-bold text-gray-900">2g</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                    <span className="text-gray-700">Carbohydrate</span>
+                    <span className="font-bold text-gray-900">8g</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                    <span className="text-gray-700">Sugar</span>
+                    <span className="font-bold text-gray-900">6g</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-gray-700">Probiotics</span>
+                    <span className="font-bold text-gray-900">1 tỷ CFU</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
-                <h3 className="font-bold text-gray-800 mb-3">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100">
+                <h3 className="font-bold text-gray-800 mb-4">
                   Hướng dẫn sử dụng
                 </h3>
-                <p className="text-gray-700 mb-4">Để có hiệu quả tốt nhất:</p>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• Uống 1-2 chai mỗi ngày</li>
-                  <li>• Bảo quản trong tủ lạnh sau khi mở</li>
-                  <li>• Sử dụng trong vòng 7 ngày sau khi mở</li>
-                  <li>• Lắc nhẹ trước khi uống</li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    Uống 1-2 chai mỗi ngày
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    Bảo quản trong tủ lạnh sau khi mở
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    Sử dụng trong vòng 7 ngày sau khi mở
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    Lắc nhẹ trước khi uống
+                  </li>
                 </ul>
-              </div>
-
-              <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Lợi ích sức khỏe
-                </h3>
-                <p className="text-gray-700 mb-4">
-                  Sản phẩm mang lại nhiều lợi ích:
-                </p>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Hỗ trợ hệ tiêu hóa</li>
-                  <li>• Tăng cường hệ miễn dịch</li>
-                  <li>• Cải thiện sức khỏe đường ruột</li>
-                  <li>• Giảm stress và mệt mỏi</li>
-                  <li>• Cung cấp năng lượng tự nhiên</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Câu Hỏi Thường Gặp
-            </h2>
-            <div className="space-y-6">
-              <div className="p-6 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl border border-emerald-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Sản phẩm có an toàn cho trẻ em không?
-                </h3>
-                <p className="text-gray-700">
-                  Sản phẩm an toàn cho trẻ em từ 3 tuổi trở lên. Tuy nhiên, nên
-                  tham khảo ý kiến bác sĩ trước khi sử dụng.
-                </p>
-              </div>
-
-              <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Có thể uống khi đang mang thai không?
-                </h3>
-                <p className="text-gray-700">
-                  Phụ nữ mang thai nên tham khảo ý kiến bác sĩ trước khi sử dụng
-                  bất kỳ sản phẩm nào.
-                </p>
-              </div>
-
-              <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100">
-                <h3 className="font-bold text-gray-800 mb-3">
-                  Sản phẩm có chứa gluten không?
-                </h3>
-                <p className="text-gray-700">
-                  Không, sản phẩm hoàn toàn không chứa gluten và phù hợp cho
-                  người ăn chay.
-                </p>
               </div>
             </div>
           </div>
