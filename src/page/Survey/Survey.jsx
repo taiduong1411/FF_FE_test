@@ -13,7 +13,7 @@ const Survey = () => {
   const products = [
     {
       name: "Blue Shyness",
-      image: "/menu_convert/BLUE SHYNESS_clipped_rev_1.png",
+      image: "/menu_convert/MINTGO_clipped_rev_1.png",
       batchNumber: "FF-2024-001",
       productionDate: "2024-01-15",
       expiryDate: "2024-07-15",
@@ -66,10 +66,10 @@ const Survey = () => {
               />
             </svg>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-6">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-6 font-sans">
             Khảo Sát Sản Phẩm
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans">
             Chia sẻ trải nghiệm của bạn về sản phẩm FF Premium để chúng tôi có
             thể cải thiện chất lượng phục vụ tốt hơn
           </p>
@@ -77,10 +77,11 @@ const Survey = () => {
 
         {/* Main Content - 2 Columns */}
         <div className="flex flex-col lg:flex-row gap-10 mb-16">
+          {/* Right Column - Survey Form */}
           <div className="lg:w-1/2">
             <StickyBox offsetTop={32} offsetBottom={32}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-                <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 h-full">
+                <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center font-sans">
                   <span className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
                     <svg
                       className="w-6 h-6 text-white"
@@ -267,10 +268,11 @@ const Survey = () => {
               </div>
             </StickyBox>
           </div>
+
           {/* Left Column - Product Information */}
           <div className="lg:w-1/2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-              <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 h-full flex flex-col">
+              <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center font-sans">
                 <span className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
                   <svg
                     className="w-6 h-6 text-white"
@@ -288,7 +290,7 @@ const Survey = () => {
                 Xuất xứ
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-4 flex-grow">
                 <div className="flex justify-between items-center py-4 px-4 bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-2xl border border-emerald-100">
                   <span className="font-semibold text-gray-700">
                     Tên sản phẩm:
@@ -322,107 +324,22 @@ const Survey = () => {
               </div>
 
               {/* Product Image */}
-              <div className="mt-8 text-center">
+              <div className="mt-8 text-center flex-grow flex items-center justify-center">
                 <div className="relative inline-block">
                   <img
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
-                    className="w-48 h-auto mx-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                    className="w-80 h-80 mx-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              {/* Additional Product Info */}
-              <div className="mt-8 space-y-4">
-                <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl p-4 border border-emerald-100">
-                  <h4 className="font-bold text-gray-800 mb-3 flex items-center">
-                    <span className="w-5 h-5 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-2">
-                      <svg
-                        className="w-3 h-3 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </span>
-                    Thông tin bổ sung
-                  </h4>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">Thể tích: 330ml</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">Calories: 45</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">Sugar: 8g</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">Protein: 2g</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 border border-blue-100">
-                  <h4 className="font-bold text-gray-800 mb-3 flex items-center">
-                    <span className="w-5 h-5 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mr-2">
-                      <svg
-                        className="w-3 h-3 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </span>
-                    Đặc điểm nổi bật
-                  </h4>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">
-                        Lên men tự nhiên 14 ngày
-                      </span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Right Column - Survey Form */}
         </div>
 
         {/* Bottom Section - Product Details */}
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-          <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center">
+          <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center font-sans">
             <span className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
               <svg
                 className="w-6 h-6 text-white"
@@ -443,7 +360,7 @@ const Survey = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Product Description */}
             <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-100">
-              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+              <h3 className="font-bold text-gray-800 mb-4 flex items-center font-sans">
                 <span className="w-6 h-6 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
                   <svg
                     className="w-3 h-3 text-white"
@@ -540,7 +457,7 @@ const Survey = () => {
             {/* Nutritional Information */}
             <div className="space-y-6">
               <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-2xl p-6 border border-emerald-100">
-                <h3 className="font-bold text-gray-800 mb-4">
+                <h3 className="font-bold text-gray-800 mb-4 font-sans">
                   Thành phần dinh dưỡng
                 </h3>
                 <div className="space-y-3">
@@ -568,7 +485,7 @@ const Survey = () => {
               </div>
 
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100">
-                <h3 className="font-bold text-gray-800 mb-4">
+                <h3 className="font-bold text-gray-800 mb-4 font-sans">
                   Hướng dẫn sử dụng
                 </h3>
                 <ul className="space-y-2 text-gray-700">
