@@ -1,16 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Leaf, Sparkles, Star, Droplets, Heart, Award } from "lucide-react";
-import VideoPlayer from "./VideoPlayer";
+import SimpleVideo from "./SimpleVideo";
 
 const About = () => {
   return (
     <section
       id="about"
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50">
-      {/* Video Background - Using VideoPlayer with mobile optimization */}
+      {/* Video Background - Using TestVideo for debugging */}
       <div className="absolute inset-0 z-0">
-        <VideoPlayer
+        <SimpleVideo
           src="/SOURCE/video/screen.mp4"
           className="w-full h-full opacity-20"
         />
@@ -35,7 +35,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <VideoPlayer
+              <SimpleVideo
                 src="/SOURCE/video/screen.mp4"
                 className="w-full h-96 lg:h-[500px]"
               />

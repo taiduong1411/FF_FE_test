@@ -15,6 +15,7 @@ const VideoPlayer = ({
   const [videoError, setVideoError] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [debugInfo, setDebugInfo] = useState("");
 
   useEffect(() => {
     // Detect mobile device
@@ -25,6 +26,7 @@ const VideoPlayer = ({
           userAgent.toLowerCase()
         );
       setIsMobile(isMobileDevice);
+      setDebugInfo(`Device: ${isMobileDevice ? "Mobile" : "Desktop"}`);
     };
 
     checkMobile();
@@ -34,6 +36,8 @@ const VideoPlayer = ({
     const playVideo = async () => {
       try {
         if (videoRef.current && autoPlay) {
+          setDebugInfo((prev) => prev + " | Attempting autoplay...");
+
           // On mobile, we need to handle autoplay differently
           if (isMobile) {
             // Try to play with user interaction simulation
@@ -41,6 +45,7 @@ const VideoPlayer = ({
             if (playPromise !== undefined) {
               await playPromise;
               setIsPlaying(true);
+              setDebugInfo((prev) => prev + " | Mobile autoplay success");
             }
           } else {
             // Desktop autoplay
@@ -48,11 +53,13 @@ const VideoPlayer = ({
             if (playPromise !== undefined) {
               await playPromise;
               setIsPlaying(true);
+              setDebugInfo((prev) => prev + " | Desktop autoplay success");
             }
           }
         }
       } catch (error) {
         console.log("Video autoplay failed:", error);
+        setDebugInfo((prev) => prev + ` | Autoplay failed: ${error.message}`);
         // On mobile, this is expected - we'll show fallback
         if (isMobile) {
           setVideoError(true);
@@ -61,7 +68,7 @@ const VideoPlayer = ({
     };
 
     // Delay for mobile to ensure proper loading
-    const delay = isMobile ? 500 : 100;
+    const delay = isMobile ? 1000 : 100;
     const timer = setTimeout(playVideo, delay);
     return () => clearTimeout(timer);
   }, [autoPlay, isMobile]);
@@ -70,11 +77,14 @@ const VideoPlayer = ({
   const handleUserInteraction = async () => {
     if (isMobile && videoRef.current && !isPlaying) {
       try {
+        setDebugInfo((prev) => prev + " | User interaction detected");
         await videoRef.current.play();
         setIsPlaying(true);
         setVideoError(false);
+        setDebugInfo((prev) => prev + " | User play success");
       } catch (error) {
         console.log("Failed to play video on user interaction:", error);
+        setDebugInfo((prev) => prev + ` | User play failed: ${error.message}`);
       }
     }
   };
@@ -82,20 +92,27 @@ const VideoPlayer = ({
   const handleVideoLoad = () => {
     setVideoLoaded(true);
     setVideoError(false);
+    setDebugInfo((prev) => prev + " | Video loaded");
   };
 
-  const handleVideoError = () => {
-    console.log("Video failed to load:", src);
+  const handleVideoError = (e) => {
+    console.log("Video failed to load:", src, e);
     setVideoError(true);
     setVideoLoaded(false);
+    setDebugInfo(
+      (prev) =>
+        prev + ` | Video error: ${e.target.error?.message || "Unknown error"}`
+    );
   };
 
   const handleVideoPlay = () => {
     setIsPlaying(true);
+    setDebugInfo((prev) => prev + " | Video playing");
   };
 
   const handleVideoPause = () => {
     setIsPlaying(false);
+    setDebugInfo((prev) => prev + " | Video paused");
   };
 
   return (
@@ -116,6 +133,13 @@ const VideoPlayer = ({
         Your browser does not support the video tag.
       </video>
 
+      {/* Debug info - remove in production */}
+      {process.env.NODE_ENV === "development" && (
+        <div className="absolute top-2 left-2 bg-black/80 text-white text-xs p-2 rounded z-50 max-w-xs">
+          {debugInfo}
+        </div>
+      )}
+
       {/* Mobile autoplay prompt */}
       {isMobile && !isPlaying && !videoError && videoLoaded && (
         <div
@@ -132,6 +156,7 @@ const VideoPlayer = ({
               </svg>
             </div>
             <p className="text-sm">Nhấn để phát video</p>
+            <p className="text-xs opacity-80 mt-1">FF Premium Experience</p>
           </div>
         </div>
       )}
@@ -152,6 +177,9 @@ const VideoPlayer = ({
                   ? "Video không tự động phát trên mobile"
                   : "Video không thể tải"}
               </p>
+            )}
+            {!videoLoaded && (
+              <p className="text-xs text-slate-500 mt-2">Đang tải video...</p>
             )}
           </div>
         </div>
