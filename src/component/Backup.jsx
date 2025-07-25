@@ -156,8 +156,8 @@ const Products = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}>
           {/* Section Badge */}
-          <motion.div
-            className="inline-flex items-center space-x-2 bg-[#1B4F27] text-white px-6 py-3 rounded-full text-sm font-medium mb-8"
+          <div
+            className="inline-flex items-center space-x-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-medium mb-8"
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
@@ -165,7 +165,7 @@ const Products = () => {
             whileHover={{ scale: 1.05 }}>
             <ShoppingBag size={16} />
             <span>Premium Collection</span>
-          </motion.div>
+          </div>
 
           {/* Title */}
           <div
@@ -224,11 +224,11 @@ const Products = () => {
                 ease: "easeOut",
               }}>
               {/* Product Image */}
-              <motion.div
+              <div
                 className="lg:w-1/2"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}>
-                <motion.div
+                <div
                   className={`relative ${product.bgColor} rounded-3xl p-12`}
                   whileHover={{
                     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
@@ -236,7 +236,7 @@ const Products = () => {
                   }}
                   transition={{ duration: 0.3 }}>
                   <div className="relative w-full h-96 flex items-center justify-center">
-                    <motion.img
+                    <img
                       src={product.image}
                       alt={product.name}
                       className="product-image w-80 h-80 object-contain drop-shadow-2xl"
@@ -251,15 +251,15 @@ const Products = () => {
                     />
 
                     {/* Premium badge */}
-                    <motion.div
+                    <div
                       className="absolute -top-4 -right-4 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center shadow-lg"
                       whileHover={{ scale: 1.1, rotate: 360 }}
                       transition={{ duration: 0.3 }}>
                       <Star size={20} className="text-white" />
-                    </motion.div>
+                    </div>
                   </div>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
 
               {/* Product Information */}
               <div className="lg:w-1/2">
@@ -277,13 +277,13 @@ const Products = () => {
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.4 }}>
                       <div className="flex items-center justify-between mb-4">
-                        <motion.h3
+                        <h3
                           className="text-4xl font-bold text-slate-900"
                           whileHover={{ scale: 1.02 }}
                           transition={{ duration: 0.2 }}>
                           {product.name}
-                        </motion.h3>
-                        <motion.div
+                        </h3>
+                        <div
                           className="flex items-center space-x-2 bg-yellow-50 px-3 py-2 rounded-full"
                           whileHover={{ scale: 1.05 }}
                           transition={{ duration: 0.2 }}>
@@ -294,7 +294,7 @@ const Products = () => {
                           <span className="text-sm font-semibold text-slate-800">
                             {product.rating}
                           </span>
-                        </motion.div>
+                        </div>
                       </div>
 
                       {/* Color accent line */}
@@ -391,7 +391,7 @@ const Products = () => {
                     </div>
 
                     {/* Premium indicator */}
-                    <motion.div
+                    <div
                       className="flex items-center space-x-2 text-slate-900 font-semibold"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -403,7 +403,7 @@ const Products = () => {
                         className="fill-current text-slate-900"
                       />
                       <span>Premium Quality</span>
-                    </motion.div>
+                    </div>
                   </div>
                 </StickyBox>
               </div>
@@ -411,19 +411,23 @@ const Products = () => {
           ))}
         </div>
 
-        {/* Nút Xem tất cả - bên phải phía dưới */}
-        <div className="flex justify-end mt-12">
-          <motion.button
-            className="flex items-center space-x-2 bg-[#1B4F27] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#153d1f] transition-all duration-300 shadow-lg"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}>
-            <span>Xem tất cả sản phẩm</span>
-            <ArrowRight size={16} />
-          </motion.button>
+        {/* Bottom CTA */}
+        <div
+          className="text-center mt-32"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}>
+          <div
+            className="inline-flex items-center space-x-8 bg-slate-900 text-white rounded-full px-8 py-4"
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ duration: 0.3 }}>
+            <span className="font-semibold">Premium Quality</span>
+            <div className="w-1 h-1 bg-white rounded-full"></div>
+            <span className="font-semibold">Natural Ingredients</span>
+            <div className="w-1 h-1 bg-white rounded-full"></div>
+            <span className="font-semibold">Handcrafted</span>
+          </div>
         </div>
       </div>
     </section>
