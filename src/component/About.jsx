@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Leaf, Sparkles, Star, Droplets, Heart, Award } from "lucide-react";
+import VideoPlayer from "./VideoPlayer";
 
 const About = () => {
   return (
@@ -9,15 +10,10 @@ const About = () => {
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50">
       {/* Video Background - Optimized */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata" // Optimize video loading
-          className="w-full h-full object-cover opacity-20">
-          <source src="/SOURCE/video/screen.mp4" type="video/mp4" />
-        </video>
+        <VideoPlayer
+          src="/SOURCE/video/screen.mp4"
+          className="w-full h-full opacity-20"
+        />
 
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/40 via-cyan-100/30 to-blue-100/40"></div>
@@ -40,15 +36,10 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-96 lg:h-[500px] object-cover">
-                <source src="/SOURCE/video/screen.mp4" type="video/mp4" />
-              </video>
+              <VideoPlayer
+                src="/SOURCE/video/screen.mp4"
+                className="w-full h-96 lg:h-[500px]"
+              />
 
               {/* Video overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

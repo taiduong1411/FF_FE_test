@@ -88,6 +88,8 @@ const Blog = () => {
     <section
       id="blog"
       className="py-24 bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50 relative overflow-hidden">
+      {/* Section Divider - Top */}
+
       {/* Background Image */}
       <div className="absolute inset-0">
         <img

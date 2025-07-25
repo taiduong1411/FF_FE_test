@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLenis } from "../contexts/LenisContext";
 import StickyBox from "react-sticky-box";
+
 import {
   Leaf,
   Star,
@@ -119,35 +120,24 @@ const Products = () => {
 
   return (
     <section
-      ref={sectionRef}
       id="products"
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src="/img_component/bg_2_component.png"
-          alt="Background"
-          className="w-full h-full object-cover opacity-20"
-        />
+      ref={sectionRef}
+      className="relative py-10 bg-gradient-to-br from-slate-50 via-emerald-50 to-cyan-50 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Animated background */}
+        <motion.div
+          className="absolute inset-0 opacity-5"
+          style={{ y: backgroundY }}
+          transition={{ duration: 0.1 }}>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-[#1B4F27] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-emerald-400 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-cyan-300 rounded-full blur-3xl"></div>
+        </motion.div>
       </div>
 
-      {/* Animated Background - Optimized with CSS */}
-      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
-        {/* Floating geometric shapes - Using CSS animations for better performance */}
-        <div className="absolute top-20 left-20 w-32 h-32 border border-slate-200 rounded-full opacity-30 animate-float"></div>
-        <div
-          className="absolute bottom-40 right-20 w-24 h-24 bg-slate-100 rounded-full opacity-40 animate-float"
-          style={{ animationDelay: "1s" }}></div>
-        <div
-          className="absolute top-1/2 left-10 w-16 h-16 border border-slate-200 rounded-lg transform rotate-45 opacity-25 animate-float"
-          style={{ animationDelay: "2s" }}></div>
-        <div
-          className="absolute bottom-1/3 right-10 w-20 h-20 bg-slate-100 rounded-lg transform -rotate-45 opacity-35 animate-float"
-          style={{ animationDelay: "3s" }}></div>
-      </motion.div>
-
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
         {/* Header Section */}
         <div
           className="text-center mb-24"
@@ -208,7 +198,7 @@ const Products = () => {
         </div>
 
         {/* Products Showcase */}
-        <div className="space-y-32">
+        <div className="space-y-16">
           {products.map((product, index) => (
             <div
               key={index}

@@ -85,7 +85,6 @@ const Navigation = () => {
               Trang chủ
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1B4F27] transition-all duration-300 group-hover:w-full"></span>
             </a>
-
             <a
               onClick={() => scrollToSection("products")}
               className="text-gray-800 hover:text-[#1B4F27] font-medium transition-all duration-300 cursor-pointer relative group">
@@ -104,12 +103,6 @@ const Navigation = () => {
               Tin tức
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1B4F27] transition-all duration-300 group-hover:w-full"></span>
             </a>
-            {/* <a
-              onClick={() => scrollToSection("contact")}
-              className="text-gray-800 hover:text-[#1B4F27] font-medium transition-all duration-300 cursor-pointer relative group">
-              Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1B4F27] transition-all duration-300 group-hover:w-full"></span>
-            </a> */}
             <Link
               to="/survey"
               className="bg-[#1B4F27] text-white px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-[#153d1f] hover:shadow-lg transform hover:-translate-y-0.5 flex items-center space-x-2">
@@ -167,51 +160,40 @@ const Navigation = () => {
                     <div className="w-8 h-8 bg-[#1B4F27] rounded-lg flex items-center justify-center">
                       <Home size={18} className="text-white" />
                     </div>
-                    <span>Home</span>
+                    <span>Trang chủ</span>
                   </motion.a>
                   <motion.a
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    onClick={() => scrollToSection("about")}
-                    className="flex items-center space-x-4 text-xl font-semibold text-gray-800 hover:text-[#1B4F27] transition-colors duration-300 cursor-pointer py-3 border-b border-gray-100">
-                    <div className="w-8 h-8 bg-[#1B4F27] rounded-lg flex items-center justify-center">
-                      <Info size={18} className="text-white" />
-                    </div>
-                    <span>About</span>
-                  </motion.a>
-                  <motion.a
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.3 }}
                     onClick={() => scrollToSection("products")}
                     className="flex items-center space-x-4 text-xl font-semibold text-gray-800 hover:text-[#1B4F27] transition-colors duration-300 cursor-pointer py-3 border-b border-gray-100">
                     <div className="w-8 h-8 bg-[#1B4F27] rounded-lg flex items-center justify-center">
                       <ShoppingBag size={18} className="text-white" />
                     </div>
-                    <span>Products</span>
+                    <span>Sản phẩm</span>
+                  </motion.a>
+                  <motion.a
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    onClick={() => scrollToSection("about")}
+                    className="flex items-center space-x-4 text-xl font-semibold text-gray-800 hover:text-[#1B4F27] transition-colors duration-300 cursor-pointer py-3 border-b border-gray-100">
+                    <div className="w-8 h-8 bg-[#1B4F27] rounded-lg flex items-center justify-center">
+                      <Info size={18} className="text-white" />
+                    </div>
+                    <span>Về chúng tôi</span>
                   </motion.a>
                   <motion.a
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    onClick={() => scrollToSection("testimonials")}
+                    onClick={() => scrollToSection("blog")}
                     className="flex items-center space-x-4 text-xl font-semibold text-gray-800 hover:text-[#1B4F27] transition-colors duration-300 cursor-pointer py-3 border-b border-gray-100">
                     <div className="w-8 h-8 bg-[#1B4F27] rounded-lg flex items-center justify-center">
-                      <Star size={18} className="text-white" />
+                      <Leaf size={18} className="text-white" />
                     </div>
-                    <span>Reviews</span>
-                  </motion.a>
-                  <motion.a
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    onClick={() => scrollToSection("contact")}
-                    className="flex items-center space-x-4 text-xl font-semibold text-gray-800 hover:text-[#1B4F27] transition-colors duration-300 cursor-pointer py-3 border-b border-gray-100">
-                    <div className="w-8 h-8 bg-[#1B4F27] rounded-lg flex items-center justify-center">
-                      <Phone size={18} className="text-white" />
-                    </div>
-                    <span>Contact</span>
+                    <span>Tin tức</span>
                   </motion.a>
                   <motion.div
                     initial={{ x: -50, opacity: 0 }}
@@ -222,7 +204,7 @@ const Navigation = () => {
                       onClick={toggleMenu}
                       className="block w-full bg-[#1B4F27] text-white text-center py-4 rounded-xl font-semibold transition-all duration-300 hover:bg-[#153d1f] hover:shadow-lg transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
                       <ClipboardList size={20} />
-                      <span>Survey</span>
+                      <span>Khảo sát</span>
                     </Link>
                   </motion.div>
                 </div>
