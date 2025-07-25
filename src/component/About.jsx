@@ -8,13 +8,12 @@ const About = () => {
     <section
       id="about"
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50">
-      {/* Video Background - Optimized */}
+      {/* Video Background - Using VideoPlayer with mobile optimization */}
       <div className="absolute inset-0 z-0">
         <VideoPlayer
           src="/SOURCE/video/screen.mp4"
           className="w-full h-full opacity-20"
         />
-
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/40 via-cyan-100/30 to-blue-100/40"></div>
       </div>

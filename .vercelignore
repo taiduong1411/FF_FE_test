@@ -1,0 +1,23 @@
+# Ignore large video files to avoid deployment issues
+public/SOURCE/video/screen.mp4
+
+# Ignore other large files
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Ignore development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore cache
+.cache
+.parcel-cache 
