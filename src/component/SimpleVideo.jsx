@@ -8,45 +8,39 @@ const SimpleVideo = ({ src, className = "" }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    // Detect mobile and Safari
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const userAgent = navigator.userAgent.toLowerCase();
     const isMobileDevice =
       /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
-        userAgent.toLowerCase()
+        userAgent
       );
     const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(userAgent);
 
     setIsMobile(isMobileDevice);
     setIsSafari(isSafariBrowser);
-
-    // Show play button for Safari mobile
-    if (isMobileDevice && isSafariBrowser) {
+    if (isMobileDevice) {
       setShowPlayButton(true);
     }
   }, []);
 
   useEffect(() => {
-    const playVideo = async () => {
-      try {
-        if (videoRef.current) {
-          // Try to play video
-          const playPromise = videoRef.current.play();
-          if (playPromise !== undefined) {
-            await playPromise;
+    const tryPlay = () => {
+      if (videoRef.current && videoRef.current.readyState >= 3) {
+        videoRef.current
+          .play()
+          .then(() => {
             setIsPlaying(true);
             setShowPlayButton(false);
-          }
-        }
-      } catch (error) {
-        console.log("Autoplay failed:", error);
-        // Show play button if autoplay fails
-        setShowPlayButton(true);
+          })
+          .catch((err) => {
+            console.log("Autoplay failed:", err);
+            setShowPlayButton(true);
+          });
+      } else {
+        setTimeout(tryPlay, 200);
       }
     };
 
-    // Delay to ensure video is loaded
-    const timer = setTimeout(playVideo, 500);
-    return () => clearTimeout(timer);
+    tryPlay();
   }, []);
 
   const handlePlay = async () => {
