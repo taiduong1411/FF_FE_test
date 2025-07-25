@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
+import Lenis from "lenis";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Lenis from "@studio-freight/lenis";
 import { LenisContext } from "./contexts/LenisContext";
 import LandingPage from "./page/LandingPage/LandingPage";
+import Survey from "./page/Survey/Survey";
 import Dashboard from "./page/Admin/Dashboard";
 import Theme from "./page/Admin/Theme/Theme";
-import Survey from "./page/Survey/Survey";
 import "./App.css";
 
 function App() {

@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@studio-freight/lenis": "^1.0.42",
+    "lenis": "^1.1.7",
     "antd": "^5.26.6",
     "axios": "^1.10.0",
     "framer-motion": "^12.23.9",
